@@ -24,11 +24,15 @@ def get_recent_tracks(user):
     tracks = []
     for raw_track in raw_tracks:
         try:
+           imgsrc = raw_track['image'][0]["#text"]
+           if imgsrc == "":
+              imgsrc = "http://cdn.last.fm/flatness/catalogue/noimage/2/default_artist_small.png"
+           print imgsrc  
            track = {
                    'name': raw_track['name'],
                    'artist': raw_track['artist']['#text'],
                    'url': raw_track['url'],
-                   'image_url': raw_track['image'][0]['#text']  
+                   'image_url': imgsrc
                    }
            tracks.append(track)
         except Exception, e:
