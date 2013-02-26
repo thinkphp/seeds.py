@@ -4,6 +4,7 @@ import logging
 
 LASTFM_API_URL = 'http://ws.audioscrobbler.com/2.0'
 
+#Get an API Account at http://www.last.fm/api/accounts
 API_KEY = '2993c6e15c91a2890c2f11fa95673067'
 
 def get_recent_tracks(user):
@@ -27,7 +28,6 @@ def get_recent_tracks(user):
            imgsrc = raw_track['image'][0]["#text"]
            if imgsrc == "":
               imgsrc = "http://cdn.last.fm/flatness/catalogue/noimage/2/default_artist_small.png"
-           print imgsrc  
            track = {
                    'name': raw_track['name'],
                    'artist': raw_track['artist']['#text'],
@@ -40,6 +40,6 @@ def get_recent_tracks(user):
 
     return tracks
 
-tracks = get_recent_tracks('olivboy')
+tracks = get_recent_tracks('yelf')
 
 print tracks[0]['artist'] + ' | ' + tracks[0]['name']
