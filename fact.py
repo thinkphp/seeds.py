@@ -17,6 +17,17 @@ def fact(n):
     #return n!
     return p
 
+def fact2(nr):
+    p = 1
+    n = nr
+    
+    while True:
+        if n == 1:
+           return p
+        else:
+           p = p * n
+           n = n - 1
+
 # solution 2 solved recursively
 def fact_rec(n):
 
@@ -37,4 +48,4 @@ if __name__ == "__main__":
         sys.exit()
     n = int(sys.argv[1]) 
     for i in range(1,n):
-        print "%s! = %s" % (i, fact_rec(i))
+        print "%s! = %s" % (i, fact(i))
