@@ -17,6 +17,7 @@ def fact(n):
     #return n!
     return p
 
+# solution 2 solved iteratively with the structure do..while
 def fact2(nr):
     p = 1
     n = nr
@@ -28,7 +29,7 @@ def fact2(nr):
            p = p * n
            n = n - 1
 
-# solution 2 solved recursively
+# solution 3 solved recursively
 def fact_rec(n):
 
     # ensure that n is natural number
