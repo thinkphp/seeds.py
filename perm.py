@@ -8,6 +8,8 @@
 #    (3 2 1)
 #
 from __future__ import print_function
+
+#solution 1 iterative
 def perm(n):
   p = []
   for i in range(0,n+1):
@@ -37,7 +39,33 @@ def perm(n):
         p[n-j+1] = aux
     if not found: 
        break 
-     
-perm(5) 
 
+print('Solution 1:')
+
+perm(3)
+
+print('Solution 2:')
+
+p = [0,1,2,3]
+n = 3
+
+#solution 2 recursive
+def perm_rec(k):
+
+    if k == n + 1:
+       for j in range(1,n+1):
+           print(p[j],end=' ') 
+       print('') 
+    else:
+       for i in range(k,0,-1):
+           aux = p[i]
+           p[i] = p[k]
+           p[k] = aux 
+           perm_rec(k+1)
+           aux = p[i]
+           p[i] = p[k]
+           p[k] = aux 
+
+
+perm_rec(1)     
 
