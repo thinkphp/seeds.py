@@ -21,8 +21,13 @@ def factors(n):
             if x <= 1:
                break   
 
-    for d in range(2,n):
+    for d in range(2,n+1):
         if m[d]:
            print d , '^' , m[d] 
-     
-factors(200)
+
+if __name__ == "__main__":
+   if len(sys.argv) != 2:
+      print "Usage: python nfact 5"
+      sys.exit()
+   n = int(sys.argv[1])
+   factors(n)     
