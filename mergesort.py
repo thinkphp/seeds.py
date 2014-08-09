@@ -1,25 +1,39 @@
 class Mergesort:
 
+      #defined a vector 
       vec = []
 
+      #start with length -1
       len = -1
 
+      #constructor of the class
       def __init__(self,arr):
 
           self.vec = arr
 
           self.len = len(arr)
 
+      #public method sort
       def sort(self):
 
           self._divimp(0,self.len-1)
 
+      #merge private method used in divide et impera
       def _merge(self,li,m,ls):
+
           i = li
           j = m+1
           k = li
-          b = [0,0,0,0,0,0,0,0,0]
-           
+          b = []
+
+          # doing each element of the temporary array called b zero
+          # because I want to assign some values and use the operator =
+          # we notive that the number of the elements is equal with the number of original vector
+          # len(b) = len(vec)
+          # i.e. b = [0,0,0,0,0,0,0,0]           
+          for bb in range(0,self.len):
+              b.append(0) 
+
           for t in range(li,ls+1):	
               b[t] = self.vec[t]
 
@@ -63,7 +77,7 @@ class Mergesort:
       def get(self):
           return self.vec 
 
-arr = [9,8,7,6,5,4,3,2,1]
+arr = [9,8,7,6,5,4,3,2,1,-1,111,-1221,0,12]
 obj = Mergesort(arr)
 obj.sort()
 print obj.get()
