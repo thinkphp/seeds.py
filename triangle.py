@@ -94,8 +94,20 @@ class Triangle:
                 j = self.road[i][j]   
                 i += 1
 
-          return solutions 
-         
+          f = open('triangle.out','w')
+
+          for i in range(0, self.countLines):
+                for j in range(0,i+1):
+                    f.write(str ( self.matrix[ i ][ j ] ) )
+                    f.write(" ")
+                f.write("\n")  
+
+          f.write("Max Sum Road => ")   
+          f.write(str(solutions))
+
+          f.close();
+
+          return solutions                 
 
 ob = Triangle()
 ob.solve()
