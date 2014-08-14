@@ -1,32 +1,72 @@
-# Longest Increasing Subsequence in Python
+# Longest Increasing Subsequence Problem
 
-import sys
-
-#my Class
 class LIS:
    
+   #public members for this class
    arr = []
 
    len = -1 
 
    L = []
 
+   output = []
+
    #the constructor of the class
-   def __init__(self, vec):
+   def __init__(self, arr=[]):
 
-       #search the index of the string that is in fact the name of the file!
-       i = vec.index('lis.py')
+       if len(arr) == 0:
 
-       #then I can remove it
-       del vec[i]        
+          self.read() 
 
-       self.arr = vec
+       else:
 
-       self.len = len(vec)
+          self.arr = arr
 
-       for i in range(0,self.len):
+          self.len = len(arr)
 
-           self.L.append(0)
+          self.L = [0] * self.len
+
+          output = [0] * self.len
+          
+
+   def read(self):
+
+       #get a pointer to file
+       fp = open('lis.in','r')
+
+       #read first line to store the number of elements
+       num = fp.readline()
+
+       #convert it to integer to able to be useful, otherwise is string 
+       num = int(num)
+
+       #assign num to self.len 
+       self.len = num
+
+       #fill up all components of the array to zero
+       self.arr = [0]*num
+
+       #fill up all components of the array to zero
+       self.L = [0]*num
+
+       #the same thing for output vector
+       output = [0]*num
+
+       #read next line, which is in fact our input vector
+       input = fp.readline()
+
+       #split \n
+       input = input.split("\n")
+        
+       #split the space between elements 
+       input = input[0].split(" ")
+
+       #store to self.arr that is our member
+       for i in range(0,num):
+           self.arr[i] = int(input[i])
+
+       #close the connection
+       fp.close()
 
    def solve(self):
 
@@ -65,23 +105,24 @@ class LIS:
            if self.L[k] > max:
               max, posMax = self.L[k], k
 
-       print self.arr[posMax]  
+       print self.arr[posMax]
+       self.output.append( self.arr[posMax] )  
 
        for i in range(posMax+1,n+1):
 
            if self.arr[i] >= self.arr[posMax] and self.L[i] == max-1:
 
+              self.output.append( self.arr[i] )  
               print self.arr[i]
               max = max - 1     
- 
 
-if __name__ == "__main__":
+   def write(self):
+       
+       print self.output
+       fp = open('lis.out','w')
+       fp.write(str(self.output))
+       fp.close() 
 
-   if len(sys.argv) <= 2:      
-
-      print "Usage: python lis.py 4 1 7 6 7"
-      sys.exit()
-
-   ob = LIS(sys.argv) 
-
-   ob.solve()
+ob = LIS()
+ob.solve()
+ob.write()
