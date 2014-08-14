@@ -24,12 +24,16 @@ class TopSort:
 
           #[0,0,0,0,0,0,0,0,0]
           self.isVisited = [0] * (m+1)  
+
           #[0,0,0,0,0,0,0,0,0]
           self.stack = [0] * m  
+
           #[0,0,0,0,0,0,0,0,0]
           self.costs = [0] * (m+1)
+
           #Matrix = [[],[],[],[],[],[],[],[],[],[],[],[]]
           self.Matrix = [[] for j in range(n)]
+
           print self.Matrix        
 
           #read each line and construct the Matrix with Costs 
@@ -116,11 +120,13 @@ class TopSort:
           j = len(arr)-1
  
           while i<j:
+
              temp = arr[i]    
              arr[i] = arr[j]   
              arr[j] = temp
              i = i + 1
              j = j - 1 
+
           return arr 
 
 ob = TopSort()
