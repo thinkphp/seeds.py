@@ -117,40 +117,7 @@ def traversal(node):
 
     output.append(node.op)
  
-#Eval PostFix Notation 
-def postFixEval(E):     
-
-    stack = []
-
-    operators = {
-                 '+': lambda x,y: x+y,
-                 '-': lambda x,y: x-y,
-                 '*': lambda x,y: x*y,
-                 '/': lambda x,y: x/y
-                }   
-
-    ch = None
-
-    for i in range(0,len(E)):
-        
-        ch = E[i]
- 
-        if re.match('\d',ch):
-
-           stack.append(int(ch))
-
-        elif ch in operators:
-   
-              x = stack.pop(-1)
-              y = stack.pop(-1)
-
-              res = operators[ch](y, x)
-
-              stack.append(res)
-
-    return stack[0]
-
-f = open('infix.in','r')
+f = open('infix2postfix.in','r')
 
 expr = f.readline()
 
