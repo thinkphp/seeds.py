@@ -1,8 +1,24 @@
-#Infix Notation => PostFix Notation using binary tree and postorder traversal. In plus an utility function that evals postFix Notation.
+#Infix Notation => PostFix Notation using Binary Tree and PostOrder Traversal.
 
 import re
 
 output = []
+
+#write to file.out
+def writeToFile( postfix ):
+
+    fp = open('infix2postfix.out','w')
+
+    strout = ''
+
+    for i in range(0, len(postfix)):
+
+        strout = strout + postfix[i]    
+
+    fp.write(strout)
+
+    fp.close()  
+
 
 # Node that holds the informations
 class Node:
@@ -59,7 +75,7 @@ def eval( E ):
     ev = [0] * n
     pv = [0] * n
 
-    for i in range(0,n):
+    for i in range(0, n):
 
         if E[i]=='(':
 
@@ -99,6 +115,8 @@ def eval( E ):
 
            k += 1 
 
+    print ev
+    print pv
     arbos = arb(0, k - 1, ev, pv)
 
     traversal(arbos)
@@ -121,20 +139,13 @@ f = open('infix2postfix.in','r')
 
 expr = f.readline()
 
-postfix = eval( expr )
-
-fp = open('postfix.out','w')
-
-strout = ''
-
-for i in range(0,len(postfix)):
-
-    strout = strout + postfix[i]    
-   
-print strout
-
-fp.write(strout)
-
-fp.close()
+expr = expr.strip()
 
 f.close()
+
+postfix = eval( expr )
+
+print postfix
+
+writeToFile( postfix )
+
