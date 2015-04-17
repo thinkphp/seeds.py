@@ -107,7 +107,8 @@ class ModExp:
 
           return sol
 
-ob = ModExp(5471,436,7)
+#ob = ModExp(5471,436,7)
+ob = ModExp(21,42,1999999973)
 
 print ob.solve1()            
 print ob.solve2()  
